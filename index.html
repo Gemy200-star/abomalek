@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>أبو مالك | خدمات الشبكات والسوشيال ميديا والألعاب</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #3B82F6;
+  --accent-light: #60A5FA;
+  --accent-dim: rgba(59,130,246,0.12);
+  --accent-glow: rgba(59,130,246,0.25);
+  --dark:  #07090F;
+  --dark2: #0C0F1A;
+  --dark3: #101420;
+  --card:  #111827;
+  --card2: #161D30;
+  --card-hover: #1A2236;
+  --voda-red: #E60000;
+  --orange-col: #FF6600;
+  --etisalat-green: #009739;
+  --social-blue: #1877F2;
+  --games-purple: #7C3AED;
+  --gold: #D4A843;
+  --gold-light: #F0C96A;
+  --gold-dim: rgba(212,168,67,0.12);
+  --text: #F1F5F9;
+  --text-soft: #CBD5E1;
+  --muted: #64748B;
+  --border: rgba(59,130,246,0.18);
+  --border2: rgba(255,255,255,0.06);
+  --border3: rgba(255,255,255,0.09);
+  --radius: 20px;
+  --radius-lg: 28px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.5);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  overflow-x: hidden;
+  direction: rtl;
+  line-height: 1.6;
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
+
+/* ─── NAV ────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 68px;
+  background: rgba(7,9,15,0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--border2);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+nav.scrolled {
+  background: rgba(7,9,15,0.95);
+  box-shadow: 0 1px 30px rgba(0,0,0,0.5);
+}
+.nav-logo {
+  font-size: 1.5rem; font-weight: 900;
+  color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.nav-logo-icon {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), #1d4ed8);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 900; color: white;
+  box-shadow: 0 0 16px rgba(59,130,246,0.4);
+  flex-shrink: 0;
+}
+.nav-logo .accent-text { color: var(--accent-light); }
+.nav-links { display: flex; gap: 0.25rem; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 600;
+  padding: 0.45rem 0.85rem; border-radius: 10px;
+  transition: color 0.2s, background 0.2s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--text); background: var(--border2); }
+.nav-cta {
+  background: var(--accent);
+  color: white; font-weight: 700; padding: 0.5rem 1.35rem;
+  border-radius: 12px; font-size: 0.88rem; text-decoration: none;
+  transition: all 0.25s;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+  display: flex; align-items: center; gap: 7px;
+}
+.nav-cta:hover { background: var(--accent-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(59,130,246,0.45); }
+
+/* hamburger */
+.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+.nav-toggle span { width: 22px; height: 2px; background: var(--text-soft); border-radius: 2px; transition: all 0.3s; display: block; }
+
+/* ─── HERO ──────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 8rem 2rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -5%, rgba(59,130,246,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 10% 90%, rgba(124,58,237,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 90% 90%, rgba(59,130,246,0.06) 0%, transparent 55%);
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.025;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+/* subtle noise texture */
+.hero-noise {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.22);
+  color: var(--accent-light); font-size: 0.82rem; font-weight: 700;
+  padding: 0.38rem 1rem; border-radius: 999px;
+  margin-bottom: 2rem; position: relative; z-index: 1;
+  animation: fadeUp 0.6s ease both;
+  letter-spacing: 0.03em;
+}
+.badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+  animation: pulse 2.2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(1.7)} }
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 900; line-height: 1.12;
+  position: relative; z-index: 1;
+  animation: fadeUp 0.7s 0.1s ease both;
+  letter-spacing: -1.5px;
+  color: var(--text);
+}
+.hero h1 .accent {
+  color: transparent;
+  background: linear-gradient(135deg, var(--accent-light) 0%, #a78bfa 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.hero p {
+  max-width: 580px; color: var(--text-soft); font-size: 1.05rem; line-height: 1.95;
+  margin: 1.5rem auto 2.75rem; position: relative; z-index: 1;
+  animation: fadeUp 0.7s 0.2s ease both;
+  font-weight: 400;
+}
+.hero-actions {
+  display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center;
+  position: relative; z-index: 1; animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #25D366, #1aad52);
+  color: white; font-weight: 800; padding: 0.9rem 2rem; border-radius: 14px;
+  font-size: 0.97rem; text-decoration: none; transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px; font-family: 'Cairo', sans-serif;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.28);
+  position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+  border-radius: inherit;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(37,211,102,0.42); }
+
+.btn-secondary {
+  background: rgba(255,255,255,0.04); color: var(--text-soft); font-weight: 700;
+  padding: 0.9rem 2rem; border-radius: 14px; font-size: 0.97rem;
+  border: 1px solid var(--border3); text-decoration: none;
+  transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Cairo', sans-serif;
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent-light); background: var(--accent-dim); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 0; justify-content: center; margin-top: 4.5rem;
+  position: relative; z-index: 1; animation: fadeUp 0.7s 0.4s ease both;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border3);
+  border-radius: 18px; overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+.stat {
+  text-align: center;
+  padding: 1.25rem 2.5rem;
+  position: relative;
+}
+.stat:not(:last-child)::after {
+  content: ''; position: absolute;
+  left: 0; top: 20%; bottom: 20%; width: 1px;
+  background: var(--border3);
+}
+.stat-num {
+  font-size: 2rem; font-weight: 900;
+  background: linear-gradient(135deg, var(--accent-light), #a78bfa);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1;
+}
+.stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 5px; font-weight: 600; }
+
+.hero-operators {
+  display: flex; gap: 0.5rem; justify-content: center; align-items: center;
+  margin-top: 2rem; position: relative; z-index: 1;
+  animation: fadeUp 0.7s 0.5s ease both; flex-wrap: wrap;
+}
+.hero-operators > span { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+.op-chip {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border2);
+  padding: 0.35rem 0.85rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700;
+  transition: border-color 0.2s, background 0.2s; cursor: default;
+}
+.op-chip:hover { background: rgba(255,255,255,0.06); border-color: var(--border3); }
+.op-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ─── SHARED ─────────────────────────────────────── */
+section { padding: 6rem 2rem; }
+.section-label {
+  font-size: 0.73rem; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--accent-light); margin-bottom: 0.6rem; text-align: center;
+  text-transform: uppercase;
+}
+.section-title {
+  font-size: clamp(1.75rem, 3.8vw, 2.7rem); font-weight: 900;
+  text-align: center; line-height: 1.18; margin-bottom: 0.85rem;
+  letter-spacing: -0.5px;
+}
+.section-sub {
+  text-align: center; color: var(--text-soft); max-width: 520px;
+  margin: 0 auto 3.5rem; font-size: 0.97rem; line-height: 1.95; font-weight: 400;
+}
+.container { max-width: 1140px; margin: 0 auto; }
+.divider {
+  width: 40px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 999px; margin: 0 auto 1.25rem;
+}
+
+.alt-bg  { background: var(--dark2); }
+.alt2-bg { background: var(--dark3); }
+
+/* ─── SECTION BADGE ──────────────────────────────── */
+.section-category {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 0.32rem 0.95rem; border-radius: 999px; font-size: 0.76rem; font-weight: 700;
+  margin: 0 auto 1rem; width: fit-content;
+  letter-spacing: 0.02em;
+}
+.cat-telecom { background: rgba(230,0,0,0.08); border: 1px solid rgba(230,0,0,0.18); color: #FCA5A5; }
+.cat-digital  { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); color: var(--accent-light); }
+.cat-games    { background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.2); color: #C4B5FD; }
+
+/* ─── SERVICE CARDS (TELECOM) ────────────────────── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.service-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border2);
+  padding: 1.75rem;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  opacity: 0.9;
+}
+/* glow on hover */
+.service-card::after {
+  content: ''; position: absolute; inset: 0; opacity: 0;
+  transition: opacity 0.35s;
+  border-radius: var(--radius);
+  background: radial-gradient(ellipse at top center, rgba(255,255,255,0.03), transparent 65%);
+}
+.service-card:hover { transform: translateY(-6px); border-color: var(--border3); box-shadow: 0 24px 50px rgba(0,0,0,0.55); background: var(--card-hover); }
+.service-card:hover::after { opacity: 1; }
+
+.card-voda::before    { background: var(--voda-red); }
+.card-orange::before  { background: var(--orange-col); }
+.card-etisalat::before{ background: var(--etisalat-green); }
+.card-we::before      { background: #7B2FBE; }
+
+.op-logo {
+  width: 50px; height: 50px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.88rem; font-weight: 900; margin-bottom: 1.25rem; color: white;
+  flex-shrink: 0;
+}
+.op-voda      { background: var(--voda-red); box-shadow: 0 6px 18px rgba(230,0,0,0.3); }
+.op-orange    { background: var(--orange-col); box-shadow: 0 6px 18px rgba(255,102,0,0.3); }
+.op-etisalat  { background: var(--etisalat-green); box-shadow: 0 6px 18px rgba(0,151,57,0.3); }
+.op-we        { background: #7B2FBE; box-shadow: 0 6px 18px rgba(123,47,190,0.3); }
+
+.service-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.45rem; color: var(--text); }
+.service-card p  { color: var(--muted); font-size: 0.87rem; line-height: 1.82; margin-bottom: 1.4rem; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  background: rgba(255,255,255,0.03); color: var(--muted);
+  font-size: 0.74rem; padding: 0.26rem 0.72rem; border-radius: 8px;
+  border: 1px solid var(--border2);
+  transition: all 0.2s; cursor: default; font-weight: 600;
+}
+.tag:hover { background: var(--accent-dim); color: var(--accent-light); border-color: var(--border); }
+
+/* ─── NEW SERVICE CARDS (DIGITAL / GAMES) ─────────── */
+.new-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.35rem;
+}
+.new-service-card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border2);
+  padding: 2rem;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), border-color 0.3s, box-shadow 0.3s, background 0.3s;
+  background: var(--card);
+}
+.new-service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+}
+.new-service-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-lg); background: var(--card-hover); }
+
+.card-social::before { background: var(--social-blue); }
+.card-social:hover { border-color: rgba(24,119,242,0.25); box-shadow: 0 24px 60px rgba(24,119,242,0.12); }
+
+.card-fb::before { background: #1877F2; }
+.card-fb:hover { box-shadow: 0 24px 60px rgba(24,119,242,0.12); border-color: rgba(24,119,242,0.25); }
+
+.card-ads::before { background: var(--gold); }
+.card-ads:hover { box-shadow: 0 24px 60px rgba(212,168,67,0.1); border-color: rgba(212,168,67,0.2); }
+
+.card-games::before { background: var(--games-purple); }
+.card-games:hover { box-shadow: 0 24px 60px rgba(124,58,237,0.15); border-color: rgba(124,58,237,0.2); }
+
+.service-icon-wrap {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.45rem; margin-bottom: 1.25rem; flex-shrink: 0;
+}
+.icon-social { background: rgba(24,119,242,0.12); border: 1px solid rgba(24,119,242,0.22); }
+.icon-fb     { background: rgba(24,119,242,0.12); border: 1px solid rgba(24,119,242,0.22); }
+.icon-ads    { background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.2); }
+.icon-games  { background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.22); }
+
+.new-service-card h3 { font-size: 1.18rem; font-weight: 800; margin-bottom: 0.55rem; color: var(--text); }
+.new-service-card p  { color: var(--muted); font-size: 0.88rem; line-height: 1.82; margin-bottom: 1.4rem; }
+
+.games-logos { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 0.5rem; justify-content: center; }
+.game-badge {
+  background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
+  color: #C4B5FD; font-size: 0.73rem; font-weight: 700;
+  padding: 0.28rem 0.75rem; border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.game-badge:hover { background: rgba(124,58,237,0.18); border-color: rgba(124,58,237,0.35); }
+
+/* ─── HOW IT WORKS ──────────────────────────────── */
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; position: relative; }
+/* connector line */
+.steps-grid::before {
+  content: ''; position: absolute;
+  top: 35px; right: 12.5%; left: 12.5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border3) 20%, var(--border3) 80%, transparent);
+  z-index: 0;
+}
+.step { text-align: center; padding: 0 0.75rem; position: relative; z-index: 1; }
+.step-num {
+  width: 68px; height: 68px; border-radius: 50%;
+  background: var(--card);
+  border: 1.5px solid var(--border3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), #1d4ed8);
+  color: white;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 0 24px rgba(59,130,246,0.25), 0 4px 16px rgba(0,0,0,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.step:hover .step-num { transform: scale(1.08); box-shadow: 0 0 32px rgba(59,130,246,0.45), 0 8px 24px rgba(0,0,0,0.4); }
+.step h4 { font-size: 1.02rem; font-weight: 800; margin-bottom: 0.45rem; color: var(--text); }
+.step p  { color: var(--muted); font-size: 0.86rem; line-height: 1.82; }
+
+/* ─── WHY US ─────────────────────────────────────── */
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.15rem; }
+.why-card {
+  background: var(--card); border-radius: var(--radius); border: 1px solid var(--border2);
+  padding: 1.5rem 1.6rem; display: flex; gap: 1rem; align-items: flex-start;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s, box-shadow 0.25s;
+  position: relative; overflow: hidden;
+}
+.why-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 3px; bottom: 0;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  opacity: 0; transition: opacity 0.3s;
+  border-radius: 0 0 0 var(--radius);
+}
+.why-card:hover { border-color: var(--border); transform: translateY(-4px); background: var(--card-hover); box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+.why-card:hover::before { opacity: 1; }
+.why-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--accent-dim); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.why-card h4 { font-size: 0.97rem; font-weight: 800; margin-bottom: 0.3rem; color: var(--text); }
+.why-card p  { color: var(--muted); font-size: 0.84rem; line-height: 1.75; }
+
+/* ─── PAYMENT ────────────────────────────────────── */
+.payment-section { background: var(--dark2); }
+.payment-container {
+  max-width: 680px; margin: 0 auto;
+  background: var(--card); border-radius: var(--radius-lg);
+  border: 1px solid var(--border3);
+  padding: 3rem; text-align: center;
+  position: relative; overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.payment-container::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--voda-red), var(--accent), var(--etisalat-green), var(--games-purple));
+}
+.payment-container::after {
+  content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 340px; height: 340px; border-radius: 50%;
+  background: radial-gradient(rgba(59,130,246,0.06), transparent 70%);
+  pointer-events: none;
+}
+.payment-icon { font-size: 2.8rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+.payment-container h3 { font-size: 1.7rem; font-weight: 900; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+.payment-container > p { color: var(--text-soft); font-size: 0.97rem; line-height: 1.85; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+
+.payment-methods { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.75rem; position: relative; z-index: 1; }
+.pay-method {
+  background: var(--dark2); border-radius: 14px; border: 1px solid var(--border2);
+  padding: 1.1rem 1.4rem; display: flex; align-items: center; justify-content: space-between;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.pay-method:hover { border-color: var(--border3); transform: translateX(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.pay-method-info { display: flex; align-items: center; gap: 1rem; }
+.pay-logo {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.82rem; font-weight: 900; color: white; flex-shrink: 0;
+}
+.pay-voda { background: var(--voda-red); box-shadow: 0 4px 14px rgba(230,0,0,0.35); }
+.pay-method-text { text-align: right; }
+.pay-method-name { font-weight: 800; font-size: 0.97rem; color: var(--text); }
+.pay-method-desc { color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
+.pay-number {
+  font-family: 'Cairo', sans-serif; font-size: 1rem; font-weight: 900;
+  color: var(--accent-light); letter-spacing: 1.5px; direction: ltr;
+  background: var(--accent-dim); padding: 0.3rem 0.75rem;
+  border-radius: 8px; border: 1px solid var(--border);
+}
+.payment-note {
+  background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.15);
+  border-radius: 12px; padding: 1rem 1.2rem;
+  color: var(--text-soft); font-size: 0.87rem; line-height: 1.75;
+  display: flex; align-items: flex-start; gap: 8px;
+  position: relative; z-index: 1;
+}
+.note-icon { font-size: 0.95rem; flex-shrink: 0; margin-top: 2px; }
+
+/* ─── DESIGN SERVICES ────────────────────────────── */
+.design-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.design-card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border2);
+  overflow: hidden; position: relative;
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s, border-color 0.3s;
+  background: var(--card); cursor: default;
+}
+.design-card:hover { transform: translateY(-8px); border-color: var(--border3); box-shadow: 0 28px 64px rgba(0,0,0,0.55); }
+
+/* BUSINESS CARD PREVIEW */
+.biz-card-preview {
+  height: 185px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.biz-card-preview.style-dark { background: linear-gradient(135deg, #07090f, #111827); }
+
+.mini-card {
+  width: 255px; height: 140px; border-radius: 12px;
+  padding: 1rem 1.2rem;
+  position: relative; overflow: hidden;
+  box-shadow: 0 14px 44px rgba(0,0,0,0.65);
+  display: flex; flex-direction: column; justify-content: space-between;
+  transform: rotate(-2deg);
+  transition: transform 0.35s;
+}
+.design-card:hover .mini-card { transform: rotate(0deg) scale(1.04); }
+.mini-card.card-style-1 {
+  background: linear-gradient(135deg, #101827, #1a2540);
+  border: 1px solid rgba(59,130,246,0.25);
+}
+.mini-card.card-style-1::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.mini-card.card-style-3 {
+  background: linear-gradient(135deg, #0f1f3d, #1a3a6e);
+  border: 1px solid rgba(99,179,255,0.2);
+}
+.mini-card.card-style-3::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #3b82f6, transparent);
+}
+.mc-name  { font-size: 0.82rem; font-weight: 900; }
+.mc-title { font-size: 0.6rem; opacity: 0.65; margin-top: 2px; }
+.mc-logo  {
+  width: 26px; height: 26px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.62rem; font-weight: 900;
+}
+.mc-logo-dark { background: var(--accent); color: white; }
+.mc-logo-blue { background: #3b82f6; color: white; }
+.mc-top    { display: flex; justify-content: space-between; align-items: flex-start; }
+.mc-phone  { font-size: 0.6rem; opacity: 0.6; direction: ltr; text-align: left; }
+.mc-divider { width: 28px; height: 1px; margin: 5px 0; opacity: 0.25; }
+.mc-divider-gold { background: var(--accent-light); }
+.mc-divider-blue { background: #3b82f6; }
+
+/* LOGO PREVIEW */
+.logo-preview {
+  height: 185px; display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+  background: linear-gradient(135deg, #0a0d18, #131828);
+  flex-wrap: wrap; padding: 1rem;
+}
+.logo-sample {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  transition: transform 0.3s;
+}
+.design-card:hover .logo-sample { transform: scale(1.06); }
+.logo-icon {
+  width: 50px; height: 50px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 900; color: white;
+  position: relative; overflow: hidden;
+}
+.logo-icon-1 { background: linear-gradient(135deg, var(--gold), #8B6200); }
+.logo-icon-2 { background: linear-gradient(135deg, var(--accent), #1d4ed8); }
+.logo-icon-3 { background: linear-gradient(135deg, #7C3AED, #4c1d95); }
+.logo-text { font-size: 0.58rem; font-weight: 700; color: var(--muted); text-align: center; }
+
+/* BANNER PREVIEW */
+.banner-preview {
+  height: 185px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #08101e, #0c1830);
+  position: relative; overflow: hidden; padding: 1rem;
+}
+.mini-banner {
+  width: 100%; max-width: 275px; height: 138px; border-radius: 10px;
+  background: linear-gradient(135deg, #0f1827, #162040);
+  border: 1px solid rgba(59,130,246,0.18);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 1rem; position: relative; overflow: hidden;
+  box-shadow: 0 10px 36px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+.design-card:hover .mini-banner { transform: scale(1.05); }
+.mini-banner::before {
+  content: ''; position: absolute; top: -25px; right: -25px;
+  width: 75px; height: 75px; border-radius: 50%;
+  background: radial-gradient(rgba(59,130,246,0.12), transparent 70%);
+}
+.mb-tag { font-size: 0.54rem; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); color: var(--accent-light); padding: 2px 8px; border-radius: 999px; margin-bottom: 6px; font-weight: 700; }
+.mb-title { font-size: 0.78rem; font-weight: 900; margin-bottom: 4px; }
+.mb-sub { font-size: 0.54rem; color: var(--muted); }
+
+/* Design card body */
+.design-card-body { padding: 1.4rem 1.5rem; }
+.design-card-body h3 { font-size: 1.12rem; font-weight: 800; margin-bottom: 0.4rem; color: var(--text); }
+.design-card-body p  { color: var(--muted); font-size: 0.85rem; line-height: 1.78; margin-bottom: 1rem; }
+.design-tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.design-tag {
+  font-size: 0.7rem; padding: 0.22rem 0.62rem; border-radius: 7px;
+  font-weight: 700; border: 1px solid; transition: opacity 0.2s;
+}
+.dtag-gold   { background: rgba(212,168,67,0.07); color: var(--gold-light); border-color: rgba(212,168,67,0.18); }
+.dtag-blue   { background: rgba(59,130,246,0.07); color: #93C5FD; border-color: rgba(59,130,246,0.18); }
+.dtag-purple { background: rgba(124,58,237,0.07); color: #C4B5FD; border-color: rgba(124,58,237,0.18); }
+.dtag-green  { background: rgba(16,185,129,0.07); color: #6EE7B7; border-color: rgba(16,185,129,0.18); }
+.dtag-red    { background: rgba(239,68,68,0.07); color: #FCA5A5; border-color: rgba(239,68,68,0.18); }
+
+/* ─── CTA SECTION ────────────────────────────────── */
+.cta-section {
+  background: var(--dark3); text-align: center; padding: 7rem 2rem;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(59,130,246,0.05) 0%, transparent 70%);
+}
+.cta-inner {
+  position: relative; z-index: 1;
+  max-width: 600px; margin: 0 auto;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border3);
+  border-radius: 28px; padding: 3.5rem 3rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 60px rgba(59,130,246,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.cta-section h2 {
+  font-size: clamp(1.9rem, 5vw, 3.2rem); font-weight: 900; margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+.cta-section p {
+  color: var(--text-soft); font-size: 1rem; margin-bottom: 2.5rem;
+  line-height: 1.9; font-weight: 400;
+}
+.contact-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.whatsapp-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #25D366, #1aad52);
+  color: white; font-weight: 800; font-size: 1rem;
+  padding: 0.95rem 2.1rem; border-radius: 14px; text-decoration: none;
+  transition: all 0.25s; font-family: 'Cairo', sans-serif;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.3);
+  position: relative; overflow: hidden;
+}
+.whatsapp-btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+  border-radius: inherit;
+}
+.whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(37,211,102,0.44); }
+.phone-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.04); color: var(--text-soft); font-weight: 700; font-size: 1rem;
+  padding: 0.95rem 2.1rem; border-radius: 14px; text-decoration: none;
+  border: 1px solid var(--border3); transition: all 0.25s; font-family: 'Cairo', sans-serif;
+  backdrop-filter: blur(8px);
+}
+.phone-btn:hover { border-color: var(--accent); color: var(--accent-light); background: var(--accent-dim); transform: translateY(-2px); }
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer {
+  background: var(--dark); border-top: 1px solid var(--border2);
+  padding: 3rem 2rem; text-align: center;
+}
+.footer-logo {
+  font-size: 1.4rem; font-weight: 900; margin-bottom: 1.25rem;
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--text);
+}
+.footer-logo-icon {
+  width: 30px; height: 30px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--accent), #1d4ed8);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem; font-weight: 900; color: white;
+}
+.footer-links { display: flex; gap: 0.25rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.footer-links a {
+  color: var(--muted); font-size: 0.84rem; text-decoration: none;
+  padding: 0.35rem 0.75rem; border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+.footer-links a:hover { color: var(--text); background: var(--border2); }
+footer p { color: var(--muted); font-size: 0.81rem; line-height: 1.85; }
+.footer-divider { width: 100%; height: 1px; background: var(--border2); margin: 0 auto 1.5rem; max-width: 400px; }
+
+/* ─── ANIMATIONS ─────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+.scroll-reveal-delay  { transition-delay: 0.12s; }
+.scroll-reveal-delay2 { transition-delay: 0.24s; }
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  nav { padding: 0 1.25rem; }
+
+  .nav-mobile-open .nav-links {
+    display: flex; flex-direction: column; gap: 0.25rem;
+    position: fixed; top: 68px; left: 0; right: 0;
+    background: rgba(7,9,15,0.97);
+    backdrop-filter: blur(24px);
+    padding: 1.25rem 1.5rem 2rem;
+    border-bottom: 1px solid var(--border2);
+  }
+  .nav-mobile-open .nav-links a { font-size: 1rem; padding: 0.6rem 0.75rem; }
+  .nav-mobile-open .nav-cta {
+    display: flex; margin: 1rem 1.5rem 0;
+    justify-content: center; font-size: 1rem;
+  }
+
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .hero h1 { letter-spacing: -0.5px; }
+  section { padding: 4.5rem 1.5rem; }
+
+  .hero-stats { border-radius: 14px; }
+  .stat { padding: 1rem 1.5rem; }
+  .stat:not(:last-child)::after { display: none; }
+  .stat { border-bottom: 1px solid var(--border3); }
+  .stat:last-child { border-bottom: none; }
+
+  .steps-grid::before { display: none; }
+
+  .cta-inner { padding: 2.5rem 1.5rem; }
+  .payment-container { padding: 2rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">AM</div>
+    أبو <span class="accent-text">مالك</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#telecom">الشبكات</a></li>
+    <li><a href="#digital">الديجيتال</a></li>
+    <li><a href="#games">الألعاب</a></li>
+    <li><a href="#design">التصميم</a></li>
+    <li><a href="#payment">الدفع</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+  <a href="https://wa.me/201096820900" class="nav-cta" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 32 32" fill="white"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.664 4.61 1.813 6.5L4 29l7.75-1.781A12.93 12.93 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3zm-3.438 7c-.207 0-.535.078-.816.375C11.46 10.672 10 11.984 10 13.813c0 1.824 1.27 3.59 1.438 3.843.171.254 2.46 3.896 6.062 5.313 3 1.172 3.605.937 4.254.875.649-.062 2.09-.852 2.383-1.672.293-.82.293-1.523.203-1.671-.086-.137-.32-.219-.668-.375-.351-.156-2.082-1.031-2.406-1.148-.324-.117-.558-.18-.793.176-.234.351-.906 1.145-1.11 1.382-.203.238-.406.266-.757.09-.352-.176-1.484-.547-2.824-1.742-1.043-.93-1.75-2.08-1.953-2.433-.207-.355-.023-.547.152-.723.156-.156.352-.41.527-.613.176-.203.235-.352.356-.586.117-.234.058-.441-.031-.617-.086-.172-.777-1.902-1.079-2.598-.234-.543-.476-.543-.676-.543z"/></svg>
+    واتساب الآن
+  </a>
+  <div class="nav-toggle" id="navToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    موزع معتمد وموثوق — شبكات · ديجيتال · ألعاب
+  </div>
+
+  <h1>أبو مالك<br><span class="accent">كل خدماتك في مكان واحد</span></h1>
+
+  <p>شحن شبكات، خدمات سوشيال ميديا، فك أعطال فيسبوك، دعاية ونشر، وشحن جميع الألعاب الأونلاين — بسرعة وأمان وأفضل الأسعار.</p>
+
+  <div class="hero-actions">
+    <a href="https://wa.me/201096820900" class="btn-primary" target="_blank">
+      <svg width="17" height="17" viewBox="0 0 32 32" fill="white"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.664 4.61 1.813 6.5L4 29l7.75-1.781A12.93 12.93 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3zm-3.438 7c-.207 0-.535.078-.816.375C11.46 10.672 10 11.984 10 13.813c0 1.824 1.27 3.59 1.438 3.843.171.254 2.46 3.896 6.062 5.313 3 1.172 3.605.937 4.254.875.649-.062 2.09-.852 2.383-1.672.293-.82.293-1.523.203-1.671-.086-.137-.32-.219-.668-.375-.351-.156-2.082-1.031-2.406-1.148-.324-.117-.558-.18-.793.176-.234.351-.906 1.145-1.11 1.382-.203.238-.406.266-.757.09-.352-.176-1.484-.547-2.824-1.742-1.043-.93-1.75-2.08-1.953-2.433-.207-.355-.023-.547.152-.723.156-.156.352-.41.527-.613.176-.203.235-.352.356-.586.117-.234.058-.441-.031-.617-.086-.172-.777-1.902-1.079-2.598-.234-.543-.476-.543-.676-.543z"/></svg>
+      واتساب الآن
+    </a>
+    <a href="#telecom" class="btn-secondary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      اكتشف خدماتنا
+    </a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">+٥٠٠٠</div>
+      <div class="stat-label">عميل سعيد</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">٨+</div>
+      <div class="stat-label">خدمات مختلفة</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">٢٤/٧</div>
+      <div class="stat-label">دعم مستمر</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">١٠٠٪</div>
+      <div class="stat-label">أمان وثقة</div>
+    </div>
+  </div>
+
+  <div class="hero-operators">
+    <span>نغطي:</span>
+    <div class="op-chip"><span class="op-dot" style="background:#E60000"></span>فودافون</div>
+    <div class="op-chip"><span class="op-dot" style="background:#FF6600"></span>أورنج</div>
+    <div class="op-chip"><span class="op-dot" style="background:#009739"></span>اتصالات</div>
+    <div class="op-chip"><span class="op-dot" style="background:#7B2FBE"></span>WE</div>
+    <div class="op-chip"><span class="op-dot" style="background:#3B82F6"></span>سوشيال ميديا</div>
+    <div class="op-chip"><span class="op-dot" style="background:#7C3AED"></span>ألعاب</div>
+  </div>
+</section>
+
+<!-- TELECOM SERVICES -->
+<section class="alt-bg" id="telecom">
+  <div class="container">
+    <div class="section-category cat-telecom">📡 خدمات الشبكات</div>
+    <div class="section-title">فودافون · أورنج · اتصالات · WE</div>
+    <div class="divider"></div>
+    <p class="section-sub">شحن رصيد، باقات إنترنت، خطوط جديدة، سداد فواتير — على كل الشبكات المصرية الكبرى.</p>
+    <div class="services-grid scroll-reveal">
+      <div class="service-card card-voda">
+        <div class="op-logo op-voda">VF</div>
+        <h3>فودافون</h3>
+        <p>أكبر شبكة في مصر. شحن فوري، باقات بيانات، سداد فواتير، وتفعيل خطوط جديدة.</p>
+        <div class="tag-list">
+          <span class="tag">شحن رصيد</span><span class="tag">باقات إنترنت</span>
+          <span class="tag">خطوط جديدة</span><span class="tag">سداد فواتير</span><span class="tag">فودافون كاش</span>
+        </div>
+      </div>
+      <div class="service-card card-orange">
+        <div class="op-logo op-orange">OR</div>
+        <h3>أورنج</h3>
+        <p>إنترنت سريع وباقات بأسعار تنافسية. شحن وإدارة اشتراكات وفواتير بكل سهولة.</p>
+        <div class="tag-list">
+          <span class="tag">شحن رصيد</span><span class="tag">باقات إنترنت</span>
+          <span class="tag">خطوط جديدة</span><span class="tag">سداد فواتير</span>
+        </div>
+      </div>
+      <div class="service-card card-etisalat">
+        <div class="op-logo op-etisalat">e&</div>
+        <h3>اتصالات (e&)</h3>
+        <p>تغطية ممتازة وأسعار مناسبة. كل احتياجاتك على اتصالات من شحن وباقات وخطوط.</p>
+        <div class="tag-list">
+          <span class="tag">شحن رصيد</span><span class="tag">باقات بيانات</span>
+          <span class="tag">خطوط جديدة</span><span class="tag">سداد فواتير</span>
+        </div>
+      </div>
+      <div class="service-card card-we">
+        <div class="op-logo op-we">WE</div>
+        <h3>WE (المصرية للاتصالات)</h3>
+        <p>خدمات موبايل وإنترنت منزلي. اشتراكات WE المحمول والإنترنت الأرضي والألياف.</p>
+        <div class="tag-list">
+          <span class="tag">شحن رصيد</span><span class="tag">إنترنت منزلي</span>
+          <span class="tag">خطوط جديدة</span><span class="tag">ADSL / فايبر</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL SERVICES -->
+<section id="digital">
+  <div class="container">
+    <div class="section-category cat-digital">📱 الخدمات الرقمية</div>
+    <div class="section-title">سوشيال ميديا · فيسبوك · دعاية ونشر</div>
+    <div class="divider"></div>
+    <p class="section-sub">كل ما تحتاجه لتنمية حضورك الرقمي وحل مشاكل حساباتك — في أسرع وقت وبأفضل الأسعار.</p>
+    <div class="new-services-grid scroll-reveal">
+      <div class="new-service-card card-social">
+        <div class="service-icon-wrap icon-social">📱</div>
+        <h3>تزويد خدمات السوشيال ميديا</h3>
+        <p>متابعين، لايكات، مشاهدات، تفاعل حقيقي على كل منصات التواصل الاجتماعي.</p>
+        <div class="tag-list">
+          <span class="tag">فيسبوك</span><span class="tag">إنستجرام</span>
+          <span class="tag">تيك توك</span><span class="tag">يوتيوب</span><span class="tag">تويتر/X</span>
+        </div>
+      </div>
+      <div class="new-service-card card-fb">
+        <div class="service-icon-wrap icon-fb">🔧</div>
+        <h3>فك جميع أعطال فيسبوك</h3>
+        <p>حسابك اتعطل أو اتقفل؟ بنساعدك تسترجعه بأسرع طريقة ممكنة بدون أي تعقيد.</p>
+        <div class="tag-list">
+          <span class="tag">فك الحظر</span><span class="tag">استرجاع الحسابات</span>
+          <span class="tag">توثيق الصفحات</span><span class="tag">حل مشاكل الإعلانات</span>
+        </div>
+      </div>
+      <div class="new-service-card card-ads">
+        <div class="service-icon-wrap icon-ads">📣</div>
+        <h3>دعاية ونشر وخدمات تمويل</h3>
+        <p>إعلانات مدفوعة، نشر احترافي، وخدمات تمويل لتوسيع نشاطك التجاري وزيادة مبيعاتك.</p>
+        <div class="tag-list">
+          <span class="tag">إعلانات فيسبوك</span><span class="tag">نشر وترويج</span>
+          <span class="tag">إدارة حملات</span><span class="tag">خدمات تمويل</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMES -->
+<section class="alt2-bg" id="games">
+  <div class="container">
+    <div class="section-category cat-games">🎮 الألعاب الأونلاين</div>
+    <div class="section-title">شحن جميع الألعاب الأونلاين</div>
+    <div class="divider"></div>
+    <p class="section-sub">شحن فوري لجميع الألعاب الأونلاين الشهيرة — بأسعار تنافسية وتسليم في دقائق.</p>
+    <div class="scroll-reveal" style="max-width:680px; margin: 0 auto;">
+      <div class="new-service-card card-games" style="text-align:center;">
+        <div class="service-icon-wrap icon-games" style="margin: 0 auto 1.5rem;">🎮</div>
+        <h3 style="font-size:1.45rem; margin-bottom:0.7rem;">شحن جميع الألعاب</h3>
+        <p style="max-width:490px; margin: 0 auto 1.75rem;">بتلعب أي لعبة أونلاين؟ بنشحن على طول بأرخص سعر وأسرع وقت. بس تواصل معانا وقولنا اللعبة.</p>
+        <div class="games-logos">
+          <span class="game-badge">PUBG Mobile</span>
+          <span class="game-badge">Free Fire</span>
+          <span class="game-badge">Mobile Legends</span>
+          <span class="game-badge">Fortnite</span>
+          <span class="game-badge">Call of Duty</span>
+          <span class="game-badge">Clash of Clans</span>
+          <span class="game-badge">Roblox</span>
+          <span class="game-badge">FIFA / FC Mobile</span>
+          <span class="game-badge">League of Legends</span>
+          <span class="game-badge">Valorant</span>
+          <span class="game-badge">وأكتر! 🎯</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="container">
+    <div class="section-label">طريقة العمل</div>
+    <div class="section-title">كيف نخدمك؟</div>
+    <div class="divider"></div>
+    <p class="section-sub">العملية بسيطة وسريعة — في دقائق خدمتك بتبقى جاهزة.</p>
+    <div class="steps-grid scroll-reveal">
+      <div class="step">
+        <div class="step-num">١</div>
+        <h4>تواصل معنا</h4>
+        <p>ابعت رسالة على واتساب. قولنا الخدمة اللي محتاجها سواء شبكة، لعبة، أو سوشيال ميديا.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">٢</div>
+        <h4>تأكيد الطلب</h4>
+        <p>بنأكدلك التفاصيل على طول وبنديك السعر المناسب بدون أي رسوم مخفية.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">٣</div>
+        <h4>ادفع بأمان</h4>
+        <p>فودافون كاش على رقم 01096820900. سريع وآمن.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">٤</div>
+        <h4>جاهز في دقائق</h4>
+        <p>خدمتك بتتنفذ في دقائق وبنأكدلك لما بتبقى جاهزة. بدون تأخير.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="alt-bg">
+  <div class="container">
+    <div class="section-label">مميزاتنا</div>
+    <div class="section-title">ليه أبو مالك؟</div>
+    <div class="divider"></div>
+    <p class="section-sub">خدمنا آلاف العملاء في مصر بسرعة وأمانة واهتمام.</p>
+    <div class="why-grid scroll-reveal">
+      <div class="why-card"><div class="why-icon">⚡</div><div><h4>تنفيذ فوري</h4><p>الخدمة بتتفعل في دقائق. مفيش انتظار أو تأخير.</p></div></div>
+      <div class="why-card"><div class="why-icon">🔒</div><div><h4>أمان كامل</h4><p>بياناتك ومدفوعاتك دايمًا محمية ومعاملة بسرية تامة.</p></div></div>
+      <div class="why-card"><div class="why-icon">💬</div><div><h4>متاح ٢٤/٧</h4><p>موجودين على واتساب في أي وقت — صبح أو ليل.</p></div></div>
+      <div class="why-card"><div class="why-icon">💰</div><div><h4>أحسن الأسعار</h4><p>أسعار تنافسية ومفيش رسوم مخفية. بتعرف بتدفع إيه.</p></div></div>
+      <div class="why-card"><div class="why-icon">🌐</div><div><h4>كل الخدمات</h4><p>شبكات، سوشيال ميديا، وألعاب — كلها في مكان واحد.</p></div></div>
+      <div class="why-card"><div class="why-icon">⭐</div><div><h4>+٥٠٠٠ عميل</h4><p>آلاف العملاء بيثقوا في أبو مالك كل يوم.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section class="payment-section" id="payment">
+  <div class="container">
+    <div class="section-label">طرق الدفع</div>
+    <div class="section-title">الدفع</div>
+    <div class="divider"></div>
+    <p class="section-sub">طرق دفع سهلة وآمنة — ادفع بالطريقة اللي تناسبك.</p>
+    <div class="payment-container scroll-reveal">
+      <div class="payment-icon">💳</div>
+      <h3>طرق الدفع المتاحة</h3>
+      <p>بنقبل الدفع عن طريق فودافون كاش بشكل آمن وفوري. بعد الدفع بنبدأ تنفيذ طلبك على طول.</p>
+      <div class="payment-methods">
+        <div class="pay-method">
+          <div class="pay-method-info">
+            <div class="pay-logo pay-voda">VF</div>
+            <div class="pay-method-text">
+              <div class="pay-method-name">فودافون كاش</div>
+              <div class="pay-method-desc">تحويل فوري وآمن على رقم أبو مالك</div>
+            </div>
+          </div>
+          <div class="pay-number">01096820900</div>
+        </div>
+      </div>
+      <div class="payment-note">
+        <span class="note-icon">💡</span>
+        <span>بعد الدفع ابعتلنا صورة الإيصال على واتساب وبنبدأ تنفيذ طلبك فوراً. في حالة أي استفسار تواصل معانا على نفس الرقم.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN SERVICES -->
+<section id="design">
+  <div class="container">
+    <div class="section-category" style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.18);color:var(--gold-light);">✨ خدمات التصميم</div>
+    <div class="section-title">تصميم كروت · لوجو · بانرات</div>
+    <div class="divider"></div>
+    <p class="section-sub">بنصمملك هوية بصرية احترافية — كروت شخصية، لوجوهات، وبانرات سوشيال ميديا تفرق وتلفت النظر.</p>
+    <div class="design-grid scroll-reveal">
+
+      <!-- BUSINESS CARDS -->
+      <div class="design-card">
+        <div class="biz-card-preview style-dark">
+          <div class="mini-card card-style-1" style="position:absolute; right: 28px; top: 18px; z-index:3;">
+            <div class="mc-top">
+              <div>
+                <div class="mc-name" style="color:var(--accent-light);">أبو مالك</div>
+                <div class="mc-title" style="color:rgba(96,165,250,0.6);">موزع معتمد</div>
+              </div>
+              <div class="mc-logo mc-logo-dark">AM</div>
+            </div>
+            <div class="mc-bottom">
+              <div class="mc-divider mc-divider-gold"></div>
+              <div class="mc-phone" style="color:var(--muted);">01096820900</div>
+            </div>
+          </div>
+          <div class="mini-card card-style-3" style="position:absolute; left: 28px; bottom: 12px; z-index:2; transform: rotate(3deg);">
+            <div class="mc-top">
+              <div>
+                <div class="mc-name" style="color:#93C5FD;">أبو مالك</div>
+                <div class="mc-title" style="color:rgba(147,197,253,0.6);">خدمات رقمية</div>
+              </div>
+              <div class="mc-logo mc-logo-blue">AM</div>
+            </div>
+            <div class="mc-bottom">
+              <div class="mc-divider mc-divider-blue"></div>
+              <div class="mc-phone" style="color:var(--muted);">01096820900</div>
+            </div>
+          </div>
+        </div>
+        <div class="design-card-body">
+          <h3>تصميم كروت شخصية</h3>
+          <p>كروت احترافية بأكتر من ستايل — كلاسيك، مودرن، أو فاخر. تصميم يعكس شخصيتك ونشاطك.</p>
+          <div class="design-tag-list">
+            <span class="design-tag dtag-gold">كروت بزنس</span>
+            <span class="design-tag dtag-blue">ستايل مودرن</span>
+            <span class="design-tag dtag-purple">تصميم فاخر</span>
+            <span class="design-tag dtag-green">جاهز للطباعة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGO DESIGN -->
+      <div class="design-card">
+        <div class="logo-preview">
+          <div class="logo-sample">
+            <div class="logo-icon logo-icon-1">AM</div>
+            <div class="logo-text">ستايل ذهبي</div>
+          </div>
+          <div class="logo-sample" style="transition-delay:0.1s;">
+            <div class="logo-icon logo-icon-2" style="border-radius:50%;">أم</div>
+            <div class="logo-text">ستايل دائري</div>
+          </div>
+          <div class="logo-sample" style="transition-delay:0.2s;">
+            <div class="logo-icon logo-icon-3" style="border-radius:8px; font-size:1.3rem;">✦</div>
+            <div class="logo-text">ستايل رمزي</div>
+          </div>
+          <div class="logo-sample" style="transition-delay:0.15s;">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div class="logo-icon logo-icon-1" style="width:38px;height:38px;border-radius:10px;font-size:0.78rem;">AM</div>
+              <div style="text-align:right;">
+                <div style="font-size:0.68rem;font-weight:900;color:var(--gold-light);">أبو مالك</div>
+                <div style="font-size:0.5rem;color:var(--muted);">موزع معتمد</div>
+              </div>
+            </div>
+            <div class="logo-text">ستايل نصي</div>
+          </div>
+        </div>
+        <div class="design-card-body">
+          <h3>تصميم لوجو احترافي</h3>
+          <p>لوجو يمثلك ويعبر عن نشاطك — بأشكال وألوان متنوعة، جاهز لكل الاستخدامات.</p>
+          <div class="design-tag-list">
+            <span class="design-tag dtag-gold">لوجو أعمال</span>
+            <span class="design-tag dtag-purple">هوية بصرية</span>
+            <span class="design-tag dtag-blue">PNG / SVG</span>
+            <span class="design-tag dtag-green">خلفية شفافة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOCIAL BANNERS -->
+      <div class="design-card">
+        <div class="banner-preview">
+          <div class="mini-banner">
+            <div class="mb-tag">✨ عرض خاص</div>
+            <div class="mb-title">أبو مالك</div>
+            <div class="mb-sub">كل خدمات الشبكات والديجيتال</div>
+            <div style="margin-top:8px; display:flex; gap:4px; justify-content:center; flex-wrap:wrap;">
+              <span style="background:rgba(230,0,0,0.18);color:#FCA5A5;font-size:0.44rem;padding:2px 6px;border-radius:5px;font-weight:700;">فودافون</span>
+              <span style="background:rgba(255,102,0,0.18);color:#FDBA74;font-size:0.44rem;padding:2px 6px;border-radius:5px;font-weight:700;">أورنج</span>
+              <span style="background:rgba(124,58,237,0.18);color:#C4B5FD;font-size:0.44rem;padding:2px 6px;border-radius:5px;font-weight:700;">ألعاب</span>
+            </div>
+          </div>
+        </div>
+        <div class="design-card-body">
+          <h3>بانرات سوشيال ميديا</h3>
+          <p>بوستات وبانرات احترافية لفيسبوك وإنستجرام وواتساب — تشد الانتباه وتزود تفاعلك.</p>
+          <div class="design-tag-list">
+            <span class="design-tag dtag-blue">بوستات فيسبوك</span>
+            <span class="design-tag dtag-purple">ستوريز</span>
+            <span class="design-tag dtag-gold">إعلانات</span>
+            <span class="design-tag dtag-red">واتساب</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <h2>جاهز تبدأ؟ 🤝</h2>
+    <p>تواصل مع أبو مالك دلوقتي على واتساب أو اتصل مباشرة — وإحنا نتكفل بكل حاجة.</p>
+    <div class="contact-btns">
+      <a href="https://wa.me/201096820900" class="whatsapp-btn" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="white"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.664 4.61 1.813 6.5L4 29l7.75-1.781A12.93 12.93 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3zm-3.438 7c-.207 0-.535.078-.816.375C11.46 10.672 10 11.984 10 13.813c0 1.824 1.27 3.59 1.438 3.843.171.254 2.46 3.896 6.062 5.313 3 1.172 3.605.937 4.254.875.649-.062 2.09-.852 2.383-1.672.293-.82.293-1.523.203-1.671-.086-.137-.32-.219-.668-.375-.351-.156-2.082-1.031-2.406-1.148-.324-.117-.558-.18-.793.176-.234.351-.906 1.145-1.11 1.382-.203.238-.406.266-.757.09-.352-.176-1.484-.547-2.824-1.742-1.043-.93-1.75-2.08-1.953-2.433-.207-.355-.023-.547.152-.723.156-.156.352-.41.527-.613.176-.203.235-.352.356-.586.117-.234.058-.441-.031-.617-.086-.172-.777-1.902-1.079-2.598-.234-.543-.476-.543-.676-.543z"/></svg>
+        واتساب: 01096820900
+      </a>
+      <a href="tel:01096820900" class="phone-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 011 2.22 2 2 0 012.96 0h3.07a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        اتصل: 01096820900
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">AM</div>
+    أبو مالك
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-links">
+    <a href="#telecom">الشبكات</a>
+    <a href="#digital">الديجيتال</a>
+    <a href="#games">الألعاب</a>
+    <a href="#design">التصميم</a>
+    <a href="#payment">الدفع</a>
+    <a href="#contact">تواصل معنا</a>
+  </div>
+  <p>موزع موثوق — شبكات · سوشيال ميديا · فيسبوك · دعاية ونشر · ألعاب أونلاين</p>
+  <p style="margin-top:0.4rem; opacity:0.35; font-size:0.77rem;">© 2026 أبو مالك. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.scroll-reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+reveals.forEach(r => obs.observe(r));
+
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
+
+// Mobile menu toggle
+const toggle = document.getElementById('navToggle');
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('nav-mobile-open');
+});
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => nav.classList.remove('nav-mobile-open'));
+});
+</script>
+</body>
+</html>
